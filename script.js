@@ -22,6 +22,7 @@ $(document).ready(function(){
 	$('form').on('submit', function(evt){
 		evt.preventDefault();
 		var city = $('.city-input').val();
+		
 		getCoordinatesForCity(city)
 		.then(getCurrentWeather)
 		.then( data => $('.city-weather').html(data.currently.temperature)); 
