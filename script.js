@@ -6,11 +6,13 @@ var GOOGLE_MAPS_API_KEY = 'AIzaSyDr74_EQzm3d2IXWZBCcgHWvy4DThLv9MA';
 var GOOGLE_MAPS_API_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
 
-function getCoordinatesForCity(cityName)
+function getCoordinatesForCity(cityName){
 	var url = `${GOOGLE_MAPS_API_URL}?address=${cityName}&key=${GOOGLE_MAPS_API_KEY}`;
 
-
-
+	$.get(url, function(response){
+		console.log(response)
+	})
+}
 
 
 // function getCoordinatesForCity(cityName){
