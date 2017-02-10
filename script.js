@@ -11,23 +11,27 @@ function getCoordinatesForCity(cityName){
 
 	$.getJSON(url, function(response){
 		console.log(response.results[0].geometry.location);
-
+		// return (response.results[0].geometry.location);
 	})
 }
 
 
+function getCurrentWeather(coords){
+	var url = `${CORS_PROXY}${DARKSKY_API_URL}${DARKSKY_API_KEY}/${coords.lat},${coords.lng}?units=si&exclude=minutely,hourly,daily,alerts,flags`;
+
+	$.getJSON(url, function(response){
+		console.log(response)
+	})
+}
 
 
+// $('form').submit(function(evt){
+// 	evt.preventDefault();
+// 	var city = $('.city-input').val();
 
-
-
-$('form').submit(function(evt){
-	evt.preventDefault();
-
-	var city = $('.city-input').val();
-
-	getCoordinatesForCity(city);
-})
+// 	getCoordinatesForCity(city);
+		// $('.city-weather').html('test');
+// })
 
 
 
