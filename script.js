@@ -9,21 +9,14 @@ var GOOGLE_MAPS_API_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 function getCoordinatesForCity(cityName){
 	var url = `${GOOGLE_MAPS_API_URL}?address=${cityName}&key=${GOOGLE_MAPS_API_KEY}`;
 
-	$.get(url, function(response){
-		console.log(response)
+	$.getJSON(url, function(response){
+		console.log(response.results[0].geometry.location);
+
 	})
 }
 
 
-// function getCoordinatesForCity(cityName){
-// 	var url = `${GOOGLE_MAPS_API_URL}?address=${cityName}&key=${GOOGLE_MAPS_API_KEY}`;
 
-// 	return(
-// 		fetch(url)
-// 		.then(response => response.json())
-// 		.then(data => data.results[0].geometry.location)
-// 	);
-// }	
 
 
 
@@ -33,7 +26,7 @@ $('form').submit(function(evt){
 
 	var city = $('.city-input').val();
 
-	alert(city);
+	getCoordinatesForCity(city);
 })
 
 
